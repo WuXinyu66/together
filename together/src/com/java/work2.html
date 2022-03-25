@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: #a6c1ee;
+        }
+        .header{
+            margin-top: -30px;
+            height: 135px;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .content{
+            height: 510px;
+            width: 40%;
+            margin-left: auto;
+            margin-right: auto;
+            border: red 1px solid;
+        }
+        .content-1{
+            width: 100%;
+            height: 50px;
+           /* border: red 2px solid;*/
+            line-height: 50px;
+            margin-left: 125px;
+        }
+        .content-1 span{
+            font-size: 18px;
+        }
+        .content-1 input{
+            width: 50px;
+            color: coral;
+        }
+        .footer{
+            width: 40%;
+            height: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            /* border: red 1px solid; */
+        }
+        form{
+            width: 25%;
+            height: 20px;
+            /* border: red 1px solid; */
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+            position: relative;
+        }
+        .footer input{
+            width: 60px;
+            background-color: antiquewhite;
+        }
+        #bt2{
+            position: absolute;
+            right: 0;
+        }
+        .header{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span id="id_M">00</span>
+        <span id="id_S">00</span>
+    </div>
+    <div class="header" align="center">
+        <h1>小学生四则运算</h1>
+    </div>
+<!-- 出题内容 -->
+    <div class="content">
+        <div class="content-1">
+            <span class="sp">3351 + 3983 = </span>
+            <input type="text" class="answer" value=""/>
+            <span class="sp">53 * 41 = </span>
+            <input type="text" class="answer" value=""/>
+        </div>
+        <div class="content-1">
+            <span class="sp">513 / 41 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">532 + 4132 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+        <div class="content-1">
+            <span class="sp">143 + 66 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">5233 + 451 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+        <div class="content-1">
+            <span class="sp">155 / 3 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">5311 + 41 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+        <div class="content-1">
+            <span class="sp">141 - 14 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">895 + 5 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+        <div class="content-1">
+            <span class="sp">655 / 5 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">5 * 423 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+        <div class="content-1">
+            <span class="sp">62 * 3 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">522 + 41 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+        <div class="content-1">
+            <span class="sp">5 + 124 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">82 / 41 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+        <div class="content-1">
+            <span class="sp">455 * 11 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">522 + 41 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+        <div class="content-1">
+            <span class="sp">42 / 7 = </span>
+            <input type="text" class="answer" value="" />
+            <span class="sp">53 + 41 = </span>
+            <input type="text" class="answer" value="" />
+        </div>
+    </div>
+<!-- 底部标签 -->
+    <div class="footer">
+        <form action="" method="post">
+            <input type="button" id="bt1" value="判断" />
+            <input type="button" id="bt2" value="再战" />
+        </form>
+    </div>
+<!-- JS脚本 -->
+    <script>
+        // 计时变量
+        var c = 0
+        var timer = null
+
+        //获取全部id选择器
+        var oBt1 = document.getElementById("bt1")
+        var oBt2 = document.getElementById("bt2")
+        //答案
+        var oContent = document.getElementsByClassName("sp")
+        var Answer = document.getElementsByClassName("answer")
+        //时间选择器
+        var id_S = document.getElementById("id_S")
+        var id_M = document.getElementById("id_M")
+        // console.log(Answer)
+        // strs = str.split(",")
+        // console.log(oContent)
+        oBt1.onclick = function(){
+            var count = 0
+            for(var i = 0;i < oContent.length;i++){
+                strs = oContent[i].innerHTML.split(" ")
+                Ans = Answer[i].value
+                // console.log(Ans)
+                var add1 = strs[0]
+                var operator = strs[1]
+                var add2 = strs[2]
+                // console.log(strs)
+                // console.log(operator)
+                if(operator == "+"){
+                    // alert(222)
+                    if(Number(add1) + Number(add2) == Number(Ans)){
+                        count++;
+                    }else{
+                        Answer[i].style.backgroundColor = "red";
+                    }
+                }
+                if(operator == "-"){
+                    if(Number(add1) - Number(add2) == Number(Ans)){
+                        count++;
+                    }else{
+                        Answer[i].style.backgroundColor = "red";
+                    }
+                }
+                if(operator == "*"){
+                    if(Number(add1) * Number(add2) == Number(Ans)){
+                        count++;
+                    }else{
+                        Answer[i].style.backgroundColor = "red";
+                    }
+                }
+                if(operator == "/"){
+                    if(Number(add1) / Number(add2) == Number(Ans)){
+                        count++;
+                    }else{
+                        Answer[i].style.backgroundColor = "red";
+                    }
+                }
+            }
+
+            // 新增计时功能，结束计时
+            c = 0
+            //数据清零
+            Min = id_M.innerText
+            S = id_S.innerText
+            id_S.innerHTML = "00"
+            id_M.innerHTML = "00"
+
+            alert("恭喜你答对了"+count+"题!"+"共用时"+Min+"分"+S+"秒！")
+        }
+
+        // 下一页 开始计时
+        oBt2.onclick = function(){
+            alert("来啊 谁怕谁")
+            for(var i = 0;i < oContent.length;i++){
+                Answer[i].style.backgroundColor = "white";
+                Answer[i].value = " "
+                var add1 = parseInt(Math.random()*100)
+                var add2 = parseInt(Math.random()*100)
+                var ope = Math.round(Math.random())
+                strs = oContent[i].innerHTML.split(" ")
+                if(ope == 0){
+                    strs[1] = "+"
+                }
+                if(ope == 1){
+                    strs[1] = "-"
+                }
+                // console.log(oContent[i].innerText)
+                // console.log(strs)
+                strs[0] = add1
+                strs[2] = add2
+                // console.log(strs)
+                oContent[i].innerText = strs[0]+" "+strs[1]+" "+strs[2]+" "+strs[3]+" "+strs[4]+" "
+            }
+
+            // 新增计时功能，开始计时
+            timer = setInterval(function() {
+                c++;
+                // console.log(c)
+                // 需要改变页面上时分秒的值
+                // console.log($("id_S"))
+                id_S.innerHTML = showNum(c % 60)
+                id_M.innerHTML = showNum(parseInt(c / 60) % 60)
+            },1000)
+        }
+        //封装一个处理单位数字的函数
+        function showNum(num) {
+            if (num < 10) {
+                return '0' + num
+            }
+            return num
+        }
+    </script>
+</body>
+</html>
+
